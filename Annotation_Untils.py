@@ -115,7 +115,6 @@ def auto_label(row):
     # Even if sentiment is neutral or positive, still delete if too toxic
     
     if row['toxicity'] > 0.6 or \
-        row['hate_score'] > 0.97 or \
         row['insult'] > 0.6 or \
         row['identity_attack'] > 0.6 or \
         row['obscene'] > 0.6 or \
