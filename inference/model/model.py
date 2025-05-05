@@ -3,8 +3,6 @@
 
 # %%
 import torch
-
-
 from transformers import BertModel
 
 import torch
