@@ -4,6 +4,7 @@ from pydantic import BaseModel
 import torch
 from transformers import BertTokenizer
 import numpy as np
+import os
 
 from model.model import BertWithScalarFeatures
 from Annotation_Untils import singular_comment_without_annotation
@@ -12,10 +13,11 @@ from DataCleaning_Untils import clean_comment
 app = FastAPI()
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+MODEL_PATH = os.path.join(os.getcwd(), "inference", "model", "best_model.pt")
 
 tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
 model = BertWithScalarFeatures(scalar_feature_dim=16, num_classes=2)
-model.load_state_dict(torch.load("model/best_model.pt", map_location=device))
+model.load_state_dict(torch.load(MODEL_PATH, map_location=device))
 model.eval()
 model.to(device)
 

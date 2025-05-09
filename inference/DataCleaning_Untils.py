@@ -2,8 +2,6 @@
 # # Libabry
 
 # %%
-import os
-import pandas as pd
 import re
 import emoji
 
@@ -45,40 +43,27 @@ def blob_correct(text):
 def clean_comment(text):
     if not isinstance(text, str):
         return ""
-    
-    #Remove html markup
+
     text = BeautifulSoup(text, "html.parser").get_text()
-    # Lower case
     text = text.lower()
 
-    # Normalize emoji
     text = emoji.demojize(text)
 
-    # Remove URL of all kind
     text = re.sub(r"http:\S+|www\S+", "", text)
 
-    # Remove mention and hashtag
     text = re.sub(r"@\w+", "", text)
     text = re.sub(r"#", "", text)
 
-    # Handle acronym words first phase
     words = text.split()
     words = [words_map.get(word, word) for word in words]
     text = " ".join(words)
 
-    #Correct small typo
     text = blob_correct(text)
 
-    # Normalize repeated character. Ex: yeeeees -> yees
     text = re.sub(r"(.)\1{2,}", r"\1", text)
 
-    # Remove non-alphanumeric except emoji alias
     text = re.sub(r"[^a-zA-Z0-9\s_:]", "", text)
     
-    # Clean up extra whitespace
     text = re.sub(r"\s+", " ", text).strip()
-
-    #textblob = TextBlob(text)
-    #text = textblob.correct()
 
     return text

@@ -95,3 +95,5 @@ lib
 *.csv
 *.cfg
 *.xlsx
+
+pretrained_model

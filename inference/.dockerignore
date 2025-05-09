@@ -20,8 +20,12 @@ notebooks/
 *.zip
 *.tgz
 *.docx
+requirements-dev.txt
 
 checkpoints/
 
 .vscode/
 .idea/
+
+model/pretrained_model/**/*
+model/pretrained_model
