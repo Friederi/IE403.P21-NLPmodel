@@ -19,6 +19,7 @@ notebooks/
 *.html
 *.zip
 *.tgz
+*.docx
 
 checkpoints/
 

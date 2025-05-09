@@ -74,9 +74,6 @@ coverage.xml
 # Cython debug symbols
 cython_debug/
 
-# VS Code
-.vscode/
-
 # Spyder
 .spyderproject
 .spyproject
