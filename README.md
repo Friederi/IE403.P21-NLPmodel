@@ -48,7 +48,7 @@ python Download_Models.py
 ### 3. Pull Docker Image from Docker Hub (or build locally, your choice!)
 
 ```
-docker push freiderich/bert-fastapi-image:1.0.0
+docker pull freiderich/bert-fastapi-image:1.0.0
 ```
 or build image yourself:
 ```
