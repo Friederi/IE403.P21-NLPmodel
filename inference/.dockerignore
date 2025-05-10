@@ -27,5 +27,5 @@ checkpoints/
 .vscode/
 .idea/
 
-model/pretrained_model/**/*
-model/pretrained_model
+model/best_model.pt
+model/pretrained_model/*

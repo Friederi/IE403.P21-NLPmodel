@@ -13,7 +13,7 @@ from DataCleaning_Untils import clean_comment
 app = FastAPI()
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-MODEL_PATH = os.path.join(os.getcwd(), "inference", "model", "best_model.pt")
+MODEL_PATH = os.path.join(os.getcwd(), "model", "best_model.pt")
 
 tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
 model = BertWithScalarFeatures(scalar_feature_dim=16, num_classes=2)
