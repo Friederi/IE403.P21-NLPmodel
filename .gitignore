@@ -97,3 +97,6 @@ lib
 *.xlsx
 
 pretrained_model
+
+environment.yml
+reset_conda_env.bat
