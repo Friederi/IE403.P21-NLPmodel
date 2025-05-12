@@ -1,10 +1,7 @@
-name: Run Tests
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+name: Python Package using Conda
+
+on: [push]
 
 jobs:
   test:
@@ -24,8 +21,10 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements-dev.txt
         pip install pytest
+        pip install httpx
 
     - name: Run tests
       run: |
         cd inference
+        python Download_models.py
         pytest tests/
