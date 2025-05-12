@@ -6,7 +6,7 @@ from transformers import AutoModelForSequenceClassification, AutoTokenizer, pipe
 import os
 
 # %% [markdown]
-MODEL_DIR = "./model/pretrained_model"
+MODEL_DIR = "./models/pretrained_model"
 os.makedirs(MODEL_DIR, exist_ok=True)
 
 # %% [markdown]

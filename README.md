@@ -42,6 +42,7 @@ Note: You are not required to run requirements-dev.txt nor inference/requirement
 
 ```
 cd ./inference
+pip install transformers
 python Download_Models.py
 ```
 

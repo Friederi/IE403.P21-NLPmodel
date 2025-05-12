@@ -1,3 +1,4 @@
+# %% [markdown]
 # app.py
 from fastapi import FastAPI
 from pydantic import BaseModel
@@ -6,14 +7,14 @@ from transformers import BertTokenizer
 import numpy as np
 import os
 
-from model.model import BertWithScalarFeatures
+from models.model import BertWithScalarFeatures
 from Annotation_Untils import singular_comment_without_annotation
 from DataCleaning_Untils import clean_comment
-
+# %%
 app = FastAPI()
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-MODEL_PATH = os.path.join(os.getcwd(), "model", "best_model.pt")
+MODEL_PATH = os.path.join(os.getcwd(), "models", "best_model.pt")
 
 tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
 model = BertWithScalarFeatures(scalar_feature_dim=16, num_classes=2)
@@ -23,6 +24,10 @@ model.to(device)
 
 class CommentRequest(BaseModel):
     text: str
+
+@app.get("/")
+def root():
+    return {"message": "API is working"}
 
 @app.post("/predict/")
 def predict(req: CommentRequest):

@@ -14,7 +14,7 @@ pd.set_option('display.max_colwidth', None)
 # %% [markdown]
 #MODEL_DIR = os.getenv("MODEL_DIR", "./model/pretrained_model")
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-PRETRAINED_DIR = os.path.join(BASE_DIR, "model", "pretrained_model")
+PRETRAINED_DIR = os.path.join(BASE_DIR, "models", "pretrained_model")
 
 ROBERTA_BASE_MODEL_PATH = os.path.join(PRETRAINED_DIR, "twitter-roberta-base-sentiment")
 TOXIC_BERT_MODEL_PATH = os.path.join(PRETRAINED_DIR, "toxic-bert")
