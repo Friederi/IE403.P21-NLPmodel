@@ -27,5 +27,10 @@ checkpoints/
 .vscode/
 .idea/
 
+*.pyo
+
+*.pyd
+
+model/__pycache__/
 model/best_model.pt
 model/pretrained_model/*

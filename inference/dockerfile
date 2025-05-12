@@ -1,20 +1,22 @@
-FROM python:3.12.10-slim as builder
+FROM python:3.12.10-slim-bookworm as builder
 WORKDIR /app
 
 COPY requirements.txt .
 RUN pip install --upgrade pip \
- && pip install --prefix=/install -r requirements.txt
+ && pip install --prefix=/install -r requirements.txt \
+ && rm -rf ~/.cache/pip
 
-FROM python:3.12.10-slim
+FROM python:3.12.10-slim-bookworm
 WORKDIR /app
 
 COPY --from=builder /install /usr/local
 COPY . .
 
-RUN pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu \
-    && python -c "import torch; print(torch.__version__)"
-
-RUN pip install transformers==4.51.3 \
-    && python -c "import transformers; print(transformers.__version__)"
+RUN pip install --no-cache-dir torch torchvision --index-url https://download.pytorch.org/whl/cpu \
+    && pip install --no-cache-dir transformers==4.51.3 \
+    && python -c "import torch; print(torch.__version__)" \
+    && python -c "import torchvision; print(torchvision.__version__)" \
+    && python -c "import transformers; print(transformers.__version__)" \
+    && rm -rf ~/.cache/pip
 
 CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
