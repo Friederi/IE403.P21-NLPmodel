@@ -25,4 +25,5 @@ jobs:
     - name: Run tests
       run: |
         cd inference
+        python Download_models.py
         pytest tests/
