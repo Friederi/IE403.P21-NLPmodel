@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
     - name: Checkout code
@@ -24,6 +24,6 @@ jobs:
 
     - name: Run tests
       run: |
-        dir inference
+        cd inference
         python Download_models.py
         pytest tests/
