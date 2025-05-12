@@ -58,13 +58,13 @@ docker build -t  bert-fastapi-image .
 
 ###  4. Run the Docker Container
 
-Make sure your local model/ directory contains:
+Make sure your local models/ directory contains:
  + best_model.pt (fine-tuned model)
  + pretrained_model/ (contains 4 Hugging Face models)
 
 Then run the container with a volume mount:
 ```
-docker run -p 8000:8000 -v "$(pwd)/model:/app/model" --name bert-fastapi-container bert-fastapi-image
+docker run -p 8000:8000 -v "$(pwd)/models:/app/modes" --name bert-fastapi-container bert-fastapi-image
 ```
 
 ### 4.1. (Optionally) Run locally
