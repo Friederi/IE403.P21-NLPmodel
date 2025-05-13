@@ -18,7 +18,7 @@ MODEL_PATH = os.path.join(os.getcwd(), "models", "best_model.pt")
 
 tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
 model = BertWithScalarFeatures(scalar_feature_dim=16, num_classes=2)
-model.load_state_dict(torch.load(MODEL_PATH, map_location=device, weights_only = False))
+model.load_state_dict(torch.load(MODEL_PATH, map_location=device))
 model.eval()
 model.to(device)
 
