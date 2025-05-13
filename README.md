@@ -49,7 +49,7 @@ python Download_Models.py
 ### 3. Pull Docker Image from Docker Hub (or build locally, your choice!)
 
 ```
-docker pull freiderich/bert-fastapi-image:1.0.0
+docker pull freiderich/bert-fastapi-image:1.0.1
 ```
 or build image yourself:
 ```
@@ -64,7 +64,7 @@ Make sure your local models/ directory contains:
 
 Then run the container with a volume mount:
 ```
-docker run -p 8000:8000 -v "$(pwd)/models:/app/modes" --name bert-fastapi-container bert-fastapi-image
+docker run -p 8000:8000 -v "$(pwd)/models:/app/models" --name bert-fastapi-container bert-fastapi-image
 ```
 
 ### 4.1. (Optionally) Run locally

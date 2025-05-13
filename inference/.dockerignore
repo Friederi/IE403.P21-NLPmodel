@@ -33,9 +33,9 @@ checkpoints/
 
 *.pyd
 
-model/__pycache__/
-model/best_model.pt
-model/pretrained_model/*
+models/__pycache__/
+models/best_model.pt
+models/pretrained_model/*
 
 tests
 tests/*
