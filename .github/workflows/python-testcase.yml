@@ -53,7 +53,7 @@ jobs:
       run: |
         cd inference
         pytest tests/
-        python evaluation.py 
+        python evaluationCI.py 
       
     - name: Post Evaluation Report
       env: |
