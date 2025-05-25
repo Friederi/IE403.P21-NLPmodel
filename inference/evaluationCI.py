@@ -13,12 +13,13 @@ def load_data(csv_path):
     tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
 
     comments = df['comment'].tolist()
+
     scalar_features = df[[
         'hate_score', 'toxicity', 'obscene', 'identity_attack', 'insult', 'threat', 'sexual_explicit',
         'sentiment_negative', 'sentiment_neutral', 'sentiment_positive',
         'emotion_anger', 'emotion_fear', 'emotion_joy', 'emotion_love', 'emotion_sadness', 'emotion_surprise'
-    ]].values.astype(np.float32)
-    
+    ]].apply(pd.to_numeric, errors='coerce').astype('float32').values
+
     labels = df['label'].values
 
     _, val_comments, _, val_scalar, _, y_val = train_test_split(
