@@ -88,13 +88,13 @@ cython_debug/
 .DS_Store
 Thumbs.db
 
-Data
 Scripts
 share
 lib
 *.csv
 *.cfg
 *.xlsx
+*.zip
 
 pretrained_model
 
