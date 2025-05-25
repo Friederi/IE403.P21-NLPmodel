@@ -14,11 +14,26 @@ def load_data(csv_path):
 
     comments = df['comment'].tolist()
 
+    scalar_feature_cols = [
+        'hate_score', 'toxicity', 'obscene', 'identity_attack', 'insult', 'threat', 'sexual_explicit',
+        'sentiment_negative', 'sentiment_neutral', 'sentiment_positive',
+        'emotion_anger', 'emotion_fear', 'emotion_joy', 'emotion_love', 'emotion_sadness', 'emotion_surprise'
+    ]
+
+    for col in scalar_feature_cols:
+        df[col] = df[col].astype(float)
+
+    label_mapping = {
+        'keep': 0,  
+        'delete': 1 
+    }
+    df['label'] = df['label'].map(label_mapping)
+
     scalar_features = df[[
         'hate_score', 'toxicity', 'obscene', 'identity_attack', 'insult', 'threat', 'sexual_explicit',
         'sentiment_negative', 'sentiment_neutral', 'sentiment_positive',
         'emotion_anger', 'emotion_fear', 'emotion_joy', 'emotion_love', 'emotion_sadness', 'emotion_surprise'
-    ]].apply(pd.to_numeric, errors='coerce').astype('float32').values
+    ]].values
 
     labels = df['label'].values
 

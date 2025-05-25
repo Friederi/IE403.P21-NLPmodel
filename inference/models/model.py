@@ -49,7 +49,7 @@ class CommentDataset(Dataset):
 
     def __getitem__(self, idx):
         comment = self.comments[idx]
-        scalar_feat = torch.tensor(self.scalar_features[idx], dtype=torch.float32)
+        scalar_feat = torch.tensor(self.scalar_features[idx], dtype=torch.float)
         label = torch.tensor(self.labels[idx], dtype=torch.long)
 
         encoded = self.tokenizer(
