@@ -11,8 +11,9 @@ def load_data(csv_path):
     df = pd.read_csv(csv_path)
 
     tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
-
-    comments = df['comment'].tolist()
+    
+    df = df.dropna()
+    comments = df['comment'].astype(str).fillna("").tolist()
 
     scalar_feature_cols = [
         'hate_score', 'toxicity', 'obscene', 'identity_attack', 'insult', 'threat', 'sexual_explicit',
