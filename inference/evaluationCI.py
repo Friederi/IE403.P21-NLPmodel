@@ -79,6 +79,13 @@ def evaluate(model, dataloader, device, true_labels):
     print(f"Recall: {recall:.4f}")
     print(f"F1 Score: {f1:.4f}")
 
+    with open("evaluation_metrics.txt", "w") as f:
+        f.write(f"**Accuracy**: {acc:.4f}\n")
+        f.write(f"**Precision**: {precision:.4f}\n")
+        f.write(f"**Recall**: {recall:.4f}\n")
+        f.write(f"**F1 Score**: {f1:.4f}\n")
+
+
 if __name__ == "__main__":
     DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     MODEL_PATH = "models/best_model.pt"  
