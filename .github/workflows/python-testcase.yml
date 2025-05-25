@@ -11,11 +11,8 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Set up CMl and DVC
+    - name: Set up CMl
       uses: iterative/setup-cml@v2
-      
-    - name: Set up DVC
-      uses: iterative/setup-dvc@v1
       
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -26,6 +23,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements-dev.txt
+        pip install dvc[gdrive]
         pip install pytest
         pip install httpx
 
