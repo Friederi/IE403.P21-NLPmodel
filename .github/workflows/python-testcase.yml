@@ -29,13 +29,11 @@ jobs:
         pip install pytest
         pip install httpx
 
-    - name: Create GDrive credentials file
+    - name: Write Google Drive credentials file
       run: |
-        echo "${{ secrets.GDRIVE_CREDENTIALS_DATA }}" > cred.json
+        echo "${{ secrets.GDRIVE_CREDENTIALS_DATA }}" | base64 --decode > cred.json
 
     - name: Configure DVC remote (with service account)
-      env:
-        GDRIVE_CREDENTIALS_DATA: ${{ secrets.GDRIVE_CREDENTIALS_DATA }}
       run: |
         dvc remote add -d gdrive_remote gdrive://1BMtD8fUFNqoI1ISBXCHVtzeu_CyIiqZX
         dvc remote modify gdrive_remote gdrive_use_service_account true --local
