@@ -33,6 +33,7 @@ jobs:
 
     - name: Configure DVC remote (with service account)
       run: |
+        dvc remote add -d gdrive_remote gdrive://1BMtD8fUFNqoI1ISBXCHVtzeu_CyIiqZX
         dvc remote modify gdrive_remote gdrive_use_service_account true --local
         dvc remote modify gdrive_remote gdrive_service_account_json_file_path cred.json --local
 
