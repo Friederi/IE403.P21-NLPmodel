@@ -39,7 +39,7 @@ def load_data(csv_path):
     labels = df['label'].values
 
     _, val_comments, _, val_scalar, _, y_val = train_test_split(
-        comments, scalar_features, labels, test_size=0.2, random_state=42, stratify=labels
+        comments, scalar_features, labels, test_size=0.01, random_state=42, stratify=labels
     )
 
     val_dataset = CommentDataset(

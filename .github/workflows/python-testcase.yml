@@ -54,7 +54,7 @@ jobs:
         python evaluationCI.py 
       
     - name: Post Evaluation Report
-      env: |
+      env: 
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
           echo "## Evaluation Results" > report.md
