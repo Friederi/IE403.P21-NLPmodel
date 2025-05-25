@@ -53,11 +53,3 @@ jobs:
         pytest tests/
         python evaluationCI.py 
       
-    - name: Post Evaluation Report
-      env: 
-          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-          echo "## Evaluation Results" > report.md
-          cat evaluation_metrics.txt >> report.md
-          cml comment create report.md
-      
