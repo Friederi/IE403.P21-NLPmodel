@@ -12,7 +12,7 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Set up CMl
-      uses: iterative/setup-cml@v1
+      uses: iterative/setup-cml@v2
       
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -39,8 +39,8 @@ jobs:
 
     - name: Pull model/data with DVC
       run: |
-        dvc pull inference/models/best_model.pt
-        dvc pull Data/Train/processed_annotated_train.csv
+        dvc pull "inference/models/best_model.pt"
+        dvc pull "Data/Train/processed_annotated_train.csv"
 
     - name: Run Download script for other models
       run: |
