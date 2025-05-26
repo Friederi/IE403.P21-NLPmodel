@@ -1,0 +1,25 @@
+namespace: dev
+name: predict-service
+
+labels:
+  app: predict-service
+
+containers:
+  name: bert-fastapi
+  image:
+    repository: freiderich/bert-fastapi-image
+    tag: 31346b2431b3762d0ec0208799ccf06854df044d
+  resources:
+    requests:
+      memory: 2Gi
+      cpu: 1
+    limits:
+      memory: 3Gi
+      cpu: 2
+  http_port: 8000
+
+service:
+  type: ClusterIP
+  ports:
+    port: 8000
+    targetPort: 8000
