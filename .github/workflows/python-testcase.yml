@@ -82,7 +82,7 @@ jobs:
 
     - name: Update Helm values.yml with new image tag
       run: |
-        sed -i "s|tag: .*|tag: ${{ github.sha }}|" helm-chart/predict-service/values.yml
+        sed -i "s|tag: .*|tag: ${{ github.sha }}|" helm-charts/predict-service/values.yaml
         git config user.name github-actions
         git config user.email github-actions@github.com
         git add helm-chart/predict-service/values.yml
