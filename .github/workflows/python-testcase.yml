@@ -80,6 +80,6 @@ jobs:
         context: ./inference
         file: ./inference/Dockerfile
         push: true
-        tags: ${{ secrets.DOCKER_USERNAME }}/bert-fast-api:1.0.4
+        tags: ${{ secrets.DOCKER_USERNAME }}/bert-fastapi-image:1.0.5
    
       
