@@ -1,6 +1,21 @@
 name: Test and Evaluate Model
 
-on: [push, pull_request]
+on:
+  push:
+    paths:
+      - 'inference/**'
+      - 'inference.dvc'
+      - 'inference/*.dvc'
+      - 'inference/models/**'
+      - 'inference/models/*.dvc'
+      - '.github/workflows/python-testcase.yml' 
+  pull_request:
+    paths:
+      - 'inference/**'
+      - 'inference.dvc'
+      - 'inference/*.dvc'
+      - 'inference/models/**'
+      - 'inference/models/*.dvc'
 
 jobs:
   test:
@@ -65,6 +80,6 @@ jobs:
         context: ./inference
         file: ./inference/Dockerfile
         push: true
-        tags: ${{ secrets.DOCKER_USERNAME }}/bert-fast-api:1.0.3
+        tags: ${{ secrets.DOCKER_USERNAME }}/bert-fast-api:1.0.4
    
       
